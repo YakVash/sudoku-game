@@ -29,3 +29,21 @@ function selectCell(cell) {
 }
 
 createBoard();
+
+// Listen for keyboard input
+document.addEventListener("keydown", function (event) {
+
+    // If no cell is selected, do nothing
+    if (!selectedCell) return;
+
+    // If key is between 1 and 9
+    if (event.key >= "1" && event.key <= "9") {
+        selectedCell.textContent = event.key;
+    }
+
+    // If Backspace is pressed → clear the cell
+    if (event.key === "Backspace") {
+        selectedCell.textContent = "";
+    }
+});
+
