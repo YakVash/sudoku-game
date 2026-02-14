@@ -24,3 +24,9 @@ body {
 .cell.selected {
     background-color: #cce5ff;
 }
+
+.cell.prefilled {
+    background-color: #ddd;
+    font-weight: bold;
+    cursor: default;
+}
