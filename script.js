@@ -16,16 +16,26 @@ const puzzle = [
 function createBoard() {
     board.innerHTML = "";
 
-    for (let i = 0; i < 81; i++) {
-        const cell = document.createElement("div");
-        cell.classList.add("cell");
+    for (let row = 0; row < 9; row++) {
+        for (let col = 0; col < 9; col++) {
 
-        // when a cell is clicked
-        cell.addEventListener("click", () => {
-            selectCell(cell);
-        });
+            const cell = document.createElement("div");
+            cell.classList.add("cell");
 
-        board.appendChild(cell);
+            cell.dataset.row = row;
+            cell.dataset.col = col;
+
+            if (puzzle[row][col] !== 0) {
+                cell.textContent = puzzle[row][col];
+                cell.classList.add("prefilled");
+            } else {
+            // when a cell is clicked
+                cell.addEventListener("click", () => {
+                    selectCell(cell);
+                });
+            }
+            board.appendChild(cell);
+        }
     }
 }
 
@@ -49,14 +59,45 @@ document.addEventListener("keydown", function (event) {
     if (!selectedCell || selectedCell.classList.contains("prefilled")) return;
 
 
-    // If key is between 1 and 9
     if (event.key >= "1" && event.key <= "9") {
-        selectedCell.textContent = event.key;
+
+        const row = parseInt(selectedCell.dataset.row);
+        const col = parseInt(selectedCell.dataset.col);
+
+        if (isValid(row, col, event.key)) {
+            selectedCell.textContent = event.key;
+            selectedCell.classList.remove("wrong");
+        } else {
+            selectedCell.textContent = event.key;
+            selectedCell.classList.add("wrong");
+        }
+    }  
+
+});
+
+//create validation Function
+function isValid(row, col, value) {
+
+    // Check row
+    for (let c = 0; c < 9; c++) {
+        if (puzzle[row][c] == value) return false;
     }
 
-    // If Backspace is pressed → clear the cell
-    if (event.key === "Backspace") {
-        selectedCell.textContent = "";
+    // Check column
+    for (let r = 0; r < 9; r++) {
+        if (puzzle[r][col] == value) return false;
     }
-});
+
+    // Check 3x3 box
+    let boxRow = Math.floor(row / 3) * 3;
+    let boxCol = Math.floor(col / 3) * 3;
+
+    for (let r = boxRow; r < boxRow + 3; r++) {
+        for (let c = boxCol; c < boxCol + 3; c++) {
+            if (puzzle[r][c] == value) return false;
+        }
+    }
+
+    return true;
+}
 

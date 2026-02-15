@@ -30,3 +30,7 @@ body {
     font-weight: bold;
     cursor: default;
 }
+
+.cell.wrong {
+    background-color: #ffcccc;
+}
