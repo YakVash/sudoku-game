@@ -64,10 +64,14 @@ document.addEventListener("keydown", function (event) {
         const row = parseInt(selectedCell.dataset.row);
         const col = parseInt(selectedCell.dataset.col);
 
+        //  Temporarily clear current cell before checking
+        selectedCell.textContent = "";
+
         if (isValid(row, col, event.key)) {
             selectedCell.textContent = event.key;
             selectedCell.classList.remove("wrong");
-        } else {
+        }
+        else {
             selectedCell.textContent = event.key;
             selectedCell.classList.add("wrong");
         }
@@ -78,14 +82,22 @@ document.addEventListener("keydown", function (event) {
 //create validation Function
 function isValid(row, col, value) {
 
+    const cells = document.querySelectorAll(".cell");
+
     // Check row
     for (let c = 0; c < 9; c++) {
-        if (puzzle[row][c] == value) return false;
+        const index = row * 9 + c;
+        if (cells[index].textContent == value) {
+            return false;
+        }
     }
 
     // Check column
     for (let r = 0; r < 9; r++) {
-        if (puzzle[r][col] == value) return false;
+        const index = r * 9 + col;
+        if (cells[index].textContent == value) {
+            return false;
+        }
     }
 
     // Check 3x3 box
@@ -94,10 +106,14 @@ function isValid(row, col, value) {
 
     for (let r = boxRow; r < boxRow + 3; r++) {
         for (let c = boxCol; c < boxCol + 3; c++) {
-            if (puzzle[r][c] == value) return false;
+            const index = r * 9 + c;
+            if (cells[index].textContent == value) {
+                return false;
+            }
         }
     }
 
     return true;
 }
+
 
