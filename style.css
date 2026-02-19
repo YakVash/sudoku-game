@@ -34,3 +34,17 @@ body {
 .cell.wrong {
     background-color: #ffcccc;
 }
+
+/* Thicker vertical lines */
+.cell:nth-child(9n+1),
+.cell:nth-child(9n+4),
+.cell:nth-child(9n+7) {
+    border-left: 3px solid black;
+}
+
+/* Thicker horizontal lines */
+.cell:nth-child(-n+9),
+.cell:nth-child(n+28):nth-child(-n+36),
+.cell:nth-child(n+55):nth-child(-n+63) {
+    border-top: 3px solid black;
+}
