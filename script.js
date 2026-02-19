@@ -70,6 +70,8 @@ document.addEventListener("keydown", function (event) {
         if (isValid(row, col, event.key)) {
             selectedCell.textContent = event.key;
             selectedCell.classList.remove("wrong");
+
+            checkWin();
         }
         else {
             selectedCell.textContent = event.key;
@@ -116,4 +118,16 @@ function isValid(row, col, value) {
     return true;
 }
 
+function checkWin() {
+
+    const cells = document.querySelectorAll(".cell");
+
+    for (let cell of cells) {
+        if (cell.textContent === "" || cell.classList.contains("wrong")) {
+            return; // Not finished yet
+        }
+    }
+
+    alert("🎉 Congratulations! You solved the Sudoku!");
+}
 
