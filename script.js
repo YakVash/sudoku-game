@@ -1,6 +1,29 @@
 const board = document.getElementById("board");
 let selectedCell = null;
 
+let seconds = 0;
+let timerInterval = null;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        seconds++;
+
+        let mins = Math.floor(seconds / 60);
+        let secs = seconds % 60;
+
+        if (secs < 10) secs = "0" + secs;
+        if (mins < 10) mins = "0" + mins;
+
+        document.getElementById("timer").textContent = 
+            "Time: " + mins + ":" + secs;
+
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
 const puzzle = [
   [5,3,0,0,7,0,0,0,0],
   [6,0,0,1,9,5,0,0,0],
@@ -51,6 +74,8 @@ function selectCell(cell) {
 }
 
 createBoard();
+
+startTimer();
 
 // Listen for keyboard input
 document.addEventListener("keydown", function (event) {
@@ -129,5 +154,6 @@ function checkWin() {
     }
 
     alert("🎉 Congratulations! You solved the Sudoku!");
+    stopTimer();
 }
 
