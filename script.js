@@ -62,6 +62,18 @@ function createBoard() {
     }
 }
 
+function resetGame() {
+
+    stopTimer();          // stop current timer
+    seconds = 0;          // reset time
+    document.getElementById("timer").textContent = "Time: 00:00";
+
+    selectedCell = null;  // clear selected cell
+
+    createBoard();        // rebuild board
+    startTimer();         // restart timer
+}
+
 function selectCell(cell) {
     // remove highlight from previously selected cell
     if (selectedCell) {
@@ -157,3 +169,4 @@ function checkWin() {
     stopTimer();
 }
 
+document.getElementById("resetBtn").addEventListener("click", resetGame);
