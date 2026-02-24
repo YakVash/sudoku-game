@@ -106,14 +106,44 @@ function resetGame() {
 }
 
 function selectCell(cell) {
-    // remove highlight from previously selected cell
-    if (selectedCell) {
-        selectedCell.classList.remove("selected");
-    }
 
-    // highlight new cell
+    // Remove previous highlights
+    const allCells = document.querySelectorAll(".cell");
+    allCells.forEach(c => {
+        c.classList.remove("selected");
+        c.classList.remove("highlight");
+    });
+
     selectedCell = cell;
     selectedCell.classList.add("selected");
+
+    const row = parseInt(cell.dataset.row);
+    const col = parseInt(cell.dataset.col);
+
+    allCells.forEach(c => {
+        const r = parseInt(c.dataset.row);
+        const cCol = parseInt(c.dataset.col);
+
+        // Same row
+        if (r === row) {
+            c.classList.add("highlight");
+        }
+
+        // Same column
+        if (cCol === col) {
+            c.classList.add("highlight");
+        }
+
+        // Same 3x3 box
+        if (
+            Math.floor(r / 3) === Math.floor(row / 3) &&
+            Math.floor(cCol / 3) === Math.floor(col / 3)
+        ) {
+            c.classList.add("highlight");
+        }
+    });
+
+    selectedCell.classList.add("selected"); // ensure strong color
 }
 
 createBoard();
