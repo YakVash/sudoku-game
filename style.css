@@ -1,109 +1,160 @@
+/* ================= GAME PAGE ================= */
+
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f2f2f2;
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1a2e, #000);
+    font-family: 'Fredoka', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Title */
+.game-title {
+    margin-top: 40px;
+    font-size: 52px;
+    text-align: center;
+    color: #00f5ff;
+    text-shadow:
+        0 0 5px #00f5ff,
+        0 0 10px #00f5ff,
+        0 0 20px #00f5ff;
+}
+
+/* Timer */
+#timer {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+/* Difficulty */
+#difficulty {
+    margin: 10px 0 20px 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* Board */
 #board {
     width: 450px;
     aspect-ratio: 1 / 1;
-    margin: 20px auto;
     display: grid;
     grid-template-columns: repeat(9, 1fr);
-    border: 3px solid black;
 }
 
-#timer {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
+/* Cells */
 .cell {
-    border: 1px solid #999;
+    border: 1px solid #00f5ff;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     line-height: 50px;
+    color: white;
+    transition: 0.2s;
 }
 
+/* Selected */
 .cell.selected {
-    background-color: #cce5ff;
+    background-color: #ff00c8;
 }
 
-.cell.prefilled {
-    background-color: #ddd;
-    font-weight: bold;
-    cursor: default;
-}
-
-.cell.wrong {
-    background-color: #ffcccc;
-}
-
-/* Thicker vertical lines */
-.cell:nth-child(9n+1),
-.cell:nth-child(9n+4),
-.cell:nth-child(9n+7) {
-    border-left: 3px solid black;
-}
-
-/* Thicker horizontal lines */
-.cell:nth-child(-n+9),
-.cell:nth-child(n+28):nth-child(-n+36),
-.cell:nth-child(n+55):nth-child(-n+63) {
-    border-top: 3px solid black;
-}
-
-#resetBtn {
-    margin-top: 15px;
-    padding: 8px 15px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
+/* Highlight */
 .cell.highlight {
-    background-color: #e6f2ff;
+    background-color: rgba(0, 245, 255, 0.2);
 }
 
-/* Home Page Styling */
+/* Prefilled */
+.cell.prefilled {
+    background-color: #0dcaf0;
+    font-weight: bold;
+}
+
+/* Wrong */
+.cell.wrong {
+    background-color: #ff0055;
+}
+
+/* 3x3 thick borders */
+.cell:nth-child(3n) {
+    border-right: 2px solid #00f5ff;
+}
+
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 2px solid #00f5ff;
+}
+
+/* Buttons */
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+#resetBtn, #pauseBtn, #homeBtn {
+    padding: 8px 18px;
+    background: black;
+    border: 2px solid #00f5ff;
+    color: #00f5ff;
+    font-family: 'Fredoka', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#resetBtn:hover, #pauseBtn:hover, #homeBtn:hover {
+    background: #00f5ff;
+    color: black;
+}
+
+/* ================= HOME PAGE ================= */
+
 body.home {
-    height: 100vh;
     margin: 0;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: radial-gradient(circle at center, #1a1a2e, #000);
+    font-family: 'Fredoka', sans-serif;
     color: white;
-    font-family: Arial, sans-serif;
 }
 
 .home-container {
     text-align: center;
 }
 
-.home-container h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+.home-title {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #00f5ff;
+    text-shadow:
+        0 0 5px #00f5ff,
+        0 0 10px #00f5ff,
+        0 0 20px #00f5ff;
 }
 
 .home-container p {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 30px;
+    opacity: 0.9;
 }
 
 .home-container button {
     padding: 12px 30px;
     font-size: 18px;
-    border: none;
-    border-radius: 6px;
+    background: black;
+    border: 2px solid #00f5ff;
+    color: #00f5ff;
+    font-family: 'Fredoka', sans-serif;
     cursor: pointer;
-    background-color: white;
-    color: #764ba2;
-    font-weight: bold;
     transition: 0.3s;
 }
 
 .home-container button:hover {
-    background-color: #ddd;
+    background: #00f5ff;
+    color: black;
 }
