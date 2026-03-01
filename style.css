@@ -65,3 +65,45 @@ body {
 .cell.highlight {
     background-color: #e6f2ff;
 }
+
+/* Home Page Styling */
+body.home {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.home-container {
+    text-align: center;
+}
+
+.home-container h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.home-container p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.home-container button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: white;
+    color: #764ba2;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.home-container button:hover {
+    background-color: #ddd;
+}

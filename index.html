@@ -2,25 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sudoku Game</title>
+    <title>Sudoku</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="home">
 
-    <h1>Sudoku Game</h1>
-    
-    <div id="timer">Time: 00:00</div>
+    <div class="home-container">
+        <h1>Welcome to Sudoku</h1>
+        <p>Challenge your mind. Test your logic.</p>
+        <button onclick="startGame()">Start Game</button>
+    </div>
 
-    <select id="difficulty">
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-    </select>
-    
-    <div id="board"></div>
-    <button id="resetBtn">Restart Game</button>
+    <script>
+        function startGame() {
+            window.location.href = "game.html";
+        }
+    </script>
 
-    
-    <script src="script.js"></script>
 </body>
 </html>
