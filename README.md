@@ -47,7 +47,8 @@ Or open `index.html` directly in any modern browser.
 
 ## Screenshot
 <img width="1864" height="849" alt="image" src="https://github.com/user-attachments/assets/06098483-1807-4da0-8b8c-b745f564060f" />
-<img width="1900" height="910" alt="image" src="https://github.com/user-attachments/assets/75e48752-d720-42e6-9a1c-34dbe5a06f51" />
+<img width="1881" height="905" alt="image" src="https://github.com/user-attachments/assets/5d736a27-35cd-407d-9b22-7ae3498eb3be" />
+
 
 
 ## License
